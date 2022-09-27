@@ -14,6 +14,7 @@ scalar=pickle.load(open('scaling.pkl','rb'))
 def home():
     return render_template('home.html')
 
+## Below code is for posting data through postman.
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
     data=request.json['data']
@@ -24,6 +25,8 @@ def predict_api():
     print(output[0])
     return jsonify(output[0])
 
+
+## Below code is for posting data through web app.
 @app.route('/predict',methods=['POST'])
 def predict():
     data=[float(x) for x in request.form.values()]
